@@ -15,6 +15,6 @@ architecture Behavioral of half_adder is
 
 begin
     c <= a and b;
-    sum <= a xor b; -- tutt'ora mi rimane il dubbio su come lo xor sia già un'operazione integrata nel sistema: come nasce?
+    sum <= a xor b; 
 
 end Behavioral;
