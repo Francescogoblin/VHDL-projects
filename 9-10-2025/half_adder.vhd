@@ -1,4 +1,3 @@
---In questo progetto creo un half adder che mi servirà poi per l'implementazione di un full adder
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
 
