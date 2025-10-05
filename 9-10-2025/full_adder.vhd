@@ -20,7 +20,7 @@ architecture Behavioral of full_adder is
   signal sig_c_out2  : std_logic;
   signal sig_sum     : std_logic;
 
-  component half_adder is
+  component half_adder is --ecco perchè abbiamo prima creato un half adder, ora lo utilizziamo come component
     
     Port (
        a       : in  std_logic;
@@ -33,21 +33,22 @@ architecture Behavioral of full_adder is
 
 begin
   
-  ha_inst1: half_adder
+  ha_inst1 : half_adder --creo un'istanza
     
     port map(
-      a => a_fa,
-      b => b_fa,
-      sum => sig_sum,
-      c_out => sig_c_out1
+      a     =>   a_fa,
+      b     =>   b_fa,
+      sum   =>   sig_sum,
+      c_out =>   sig_c_out1
     );
     
-    ha_inst2: half_adder
-      port map(
-        a => sig_sum,
-        b => c_in_fa,
-        sum => sum_fa,
-        c_out => sig_c_out2
+  ha_inst2: half_adder --creo una seconda istanza
+    
+    port map(
+      a     =>   sig_sum,
+      b     =>   c_in_fa,
+      sum   =>   sum_fa,
+      c_out =>   sig_c_out2
       );
 
       c_out_fa <= sig_c_out1 or sig_c_out2;
