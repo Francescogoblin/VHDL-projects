@@ -7,8 +7,8 @@ entity ALU is
     Port (
     
     op_sel : in std_logic_vector(1 DOWNTO 0);
-    a : in signed(7 DOWNTO 0);
-    b : in signed(7 DOWNTO 0);
+    a : in  signed(7 DOWNTO 0);
+    b : in  signed(7 DOWNTO 0);
     c : out signed(7 DOWNTO 0)
 
           );
@@ -18,7 +18,7 @@ end ALU;
 architecture Behavioral of ALU is
 
       signal add, sub : signed(7 DOWNTO 0);
-      signal mul : signed(15 DOWNTO 0);
+      signal mul      : signed(15 DOWNTO 0);
       
 begin
 
