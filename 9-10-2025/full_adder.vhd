@@ -9,7 +9,7 @@ entity full_adder is
      b_fa      : in    std_logic;
      c_in_fa   : in    std_logic; --bit del resto precedente
      sum_fa    : out   std_logic;
-     c_out_fa  : out   std_logic 
+     c_out_fa  : out   std_logic  -- bit del resto adesso
 
   );
     
