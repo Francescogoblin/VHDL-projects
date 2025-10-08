@@ -4,10 +4,10 @@ use IEEE.STD_LOGIC_1164.all;
 entity half_adder is
   
   Port (
-     a   : in std_logic; 
+     a   : in  std_logic; 
      b   : in  std_logic;
      c   : out std_logic; --riporto
-     sum : out std_logic --somma
+     sum : out std_logic  --somma
    );
   
 end half_adder;
@@ -20,3 +20,5 @@ begin
     sum <= a xor b; --questa è la somma vera e propria
 
 end Behavioral;
+
+
