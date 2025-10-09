@@ -9,7 +9,7 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	component Adder_4bit is
+	component adder_4bit is
 	Port(
 
 		a	: in std_logic_vector(3 DOWNTO 0);
@@ -22,7 +22,7 @@ architecture Behavioral of top_sim is
 	signal a,b,sum	: std_logic_vector(3 DOWNTO 0);
 begin
 
-	dut : Adder_4bit
+	dut : adder_4bit
 		Port map(
 
 			a	=> a,
