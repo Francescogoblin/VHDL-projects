@@ -33,7 +33,7 @@ architecture Behavioral of full_adder is
 
 begin
   
-  ha_inst1 : half_adder  --creo un'istanza che si occupa diceseguire la somma dei due numeri originali e 
+  ha_inst1 : half_adder  --creo un'istanza che si occupa di eseguire la somma dei due numeri originali e 
 -- mette la somma in sig_sum, mentre il riporto in sig_c_out1
     
     port map(
