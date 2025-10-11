@@ -20,7 +20,7 @@ architecture Behavioral of full_adder is
   signal sig_c_out2  : std_logic;
   signal sig_sum     : std_logic;
 
-    component half_adder is --ecco perchè abbiamo prima creato un half adder, ora lo utilizziamo come component
+    component half_adder is 
     
     Port (
        a       : in  std_logic;
