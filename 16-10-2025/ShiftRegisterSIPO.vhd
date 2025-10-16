@@ -28,7 +28,7 @@ architecture Behavioral of ShiftRegisterSIPO is
 	   signal n : std_logic_vector(3 DOWNTO 0);
 
 begin
-         ff_d_inst_0 : ff_d --INSTANZA INIZIALE
+         ff_d_inst_0 : ff_d                                                          --INSTANZA INIZIALE
             Port Map (
             	reset_ff => reset,
             	clk_ff   => clk,
