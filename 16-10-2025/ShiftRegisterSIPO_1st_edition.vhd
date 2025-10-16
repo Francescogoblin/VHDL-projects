@@ -49,7 +49,7 @@ begin
     end generate;
 
  	GEN_OUT : for I in 0 to SR_WIDTH-1 generate
-    	data_out(I) <= n(SR_WIDTH - I);
+    	data_out(I) <= n(SR_WIDTH-1 - I);
     end generate;
                 
                 
