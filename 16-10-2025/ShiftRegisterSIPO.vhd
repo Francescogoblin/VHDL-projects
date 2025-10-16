@@ -65,7 +65,7 @@ begin
            
             );
             
-             data_out(I) => n(3-I) ;  --assegna a data out il valore di n      
+             data_out(I) <= n(3-I) ;  --assegna a data out il valore di n      
     
     end generate;
                 
