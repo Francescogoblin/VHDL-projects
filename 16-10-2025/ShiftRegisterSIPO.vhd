@@ -52,7 +52,7 @@ begin
             );
             
          --INIZIO DEL LOOP
-   LOOP_GEN  : for I in 0 to 3 generate
+   LOOP_GEN  : for I in 0 to 2 generate
         
         ff_d_inst_1 : ff_d
         
