@@ -16,6 +16,7 @@ end ShiftRegisterSIPO;
 
 
 architecture Behavioral of ShiftRegisterSIPO is
+	
     component ff_d is
        	Port(
 		  reset_ff	: in std_logic;
@@ -25,7 +26,7 @@ architecture Behavioral of ShiftRegisterSIPO is
 	   );  
 	   end component;
 	   
-	   signal n : std_logic_vector(3 DOWNTO 0);
+	signal n : std_logic_vector(3 DOWNTO 0);
 
 begin
          ff_d_inst_0 : ff_d                                                          --INSTANZA INIZIALE
@@ -47,11 +48,8 @@ begin
             );
                
     end generate;
-
- 	GEN_OUT : for I in 0 to SR_WIDTH-1 generate
-    	data_out(I) <= n(SR_WIDTH-1 - I);
-    end generate;
-                
+    	
+			data_out <= n;
                 
 end Behavioral;
 
