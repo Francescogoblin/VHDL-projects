@@ -7,7 +7,7 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	constant LARGHEZZA_SR_SIPO : integer := 4; 
+	constant LARGHEZZA_SR_SIPO : integer := 4; -- Ora prova a cambiare in 32
 
 	component ShiftRegisterSIPO is
 		Generic(
@@ -16,15 +16,18 @@ architecture Behavioral of top_sim is
 		Port(
 			reset		: in std_logic;
 			clk			: in std_logic;
+
 			data_in		: in std_logic;
+
 			data_out	: inout std_logic_vector(SR_WIDTH-1 DOWNTO 0)
 
 		);
 	end component;
 
-	signal clk	  	: std_logic := '0';
-	signal reset  	: std_logic := '0';
+	signal clk		: std_logic := '0';
+	signal reset	: std_logic := '0';
 	signal data_in	: std_logic := '0';
+	-- data_out serve solo per vedere il segnale direttamente in simulazione
 	signal data_out	: std_logic_vector(LARGHEZZA_SR_SIPO-1 DOWNTO 0);
 
 begin
