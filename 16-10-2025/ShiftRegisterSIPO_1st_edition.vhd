@@ -29,6 +29,12 @@ architecture Behavioral of ShiftRegisterSIPO is
 	signal n : std_logic_vector(3 DOWNTO 0);
 
 begin
+	if SR_WIDTH = 0 then
+		
+    	report "Errore: STD è uguale a 1" severity error;
+	
+	elsif SR_WIDTH > 0 then
+	
 	ff_d_inst_0 : ff_d                                                          --INSTANZA INIZIALE
     	Port Map (
         	reset_ff => reset,
@@ -50,6 +56,8 @@ begin
     end generate;
     	
 	data_out <= n;
+
+	end if;
                 
 end Behavioral;
 
