@@ -4,7 +4,7 @@ library IEEE;
 entity ff_d is
 	Port(
 		reset	: in  std_logic;
-		clk	: in  std_logic;
+		clk		: in  std_logic;
 
 		d 	        : in  std_logic;
 		q 	        : out std_logic
@@ -12,7 +12,9 @@ entity ff_d is
 end ff_d;
 
 architecture Behavioral of ff_d is
-	signal q_int : std_logic := 'U';
+	
+	signal q_int : std_logic := 'U';  --CREAZIONE SEGNALE
+
 begin
 
 	q_int	<= 	'0' when reset_ff = '1' else
