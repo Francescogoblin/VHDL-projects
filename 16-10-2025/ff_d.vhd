@@ -3,8 +3,8 @@ library IEEE;
 
 entity ff_d is
 	Port(
-		reset_ff	: in  std_logic;
-		clk_ff		: in  std_logic;
+		reset	: in  std_logic;
+		clk	: in  std_logic;
 
 		d 	        : in  std_logic;
 		q 	        : out std_logic
@@ -16,7 +16,7 @@ architecture Behavioral of ff_d is
 begin
 
 	q_int	<= 	'0' when reset_ff = '1' else
-				d 	when rising_edge(clk_ff) else q_int;
+				d 	when rising_edge(clk) else q_int;
 
 	q <= q_int;
 	
