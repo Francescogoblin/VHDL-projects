@@ -31,8 +31,12 @@ component ff_d is
 	);
 	end component;
 
+	signal n1 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
+	signal n2 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
+	signal n3 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 
 begin
 
-
+	for I in 0 TO COUNT_WIDTH-1
+	
 end Behavioral;
