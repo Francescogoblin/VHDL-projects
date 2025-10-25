@@ -31,28 +31,30 @@ component ff_d is
 	);
 	end component;
 
+	signal inc_signal: std_logic_vector (COUNT_WIDTH-1 DOWNTO 0);
+	signal dec_signal: std_logic_vector (COUNT_WIDTH-1 DOWNTO 0);
+	
 	signal n1 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
-	signal n2 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
-	signal n3 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 	signal n4 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 
 begin
 
-	n1 <= inc_count-dec_count; 
+	inc_signal <= inc_count;
+	dec_signal <= dec_count; 
 	
-	LOOP_int for I in 0 TO COUNT_WIDTH-1
+	LOOP_int for I in 0 TO COUNT_WIDTH-1 generate -- CREO QUANTI FLIP FLOP MI SERVONO
 		ff_inst : ff_d
 			Port map(
-				d => n3(I),    
+				d => n1(I),    
                 q => n4(I),     
                 
                 clk => clk,
                 reset => reset
 				);
 	end generate
-
-	n3 <=  n1 + n2 ;
-	n2 <=  n4;
-	count <= n4;
+	count <= signed(n4);
+	n1 <= signed(n4) + signed(inc_signal) - signed(dec_signal)   -- ESEGUO UNA CONVERSIONE IN SIGNED
+		
+	
 		
 end Behavioral;
