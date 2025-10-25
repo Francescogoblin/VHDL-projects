@@ -34,9 +34,25 @@ component ff_d is
 	signal n1 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 	signal n2 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 	signal n3 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
+	signal n4 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 
 begin
 
-	for I in 0 TO COUNT_WIDTH-1
+	n1 <= inc_count-dec_count; 
 	
+	LOOP_int for I in 0 TO COUNT_WIDTH-1
+		ff_inst : ff_d
+			Port map(
+				d => n3(I),    
+                q => n4(I),     
+                
+                clk => clk,
+                reset => reset
+				);
+	end generate
+
+	n3 <=  n1 + n2 ;
+	n2 <=  n4;
+	count <= n4;
+		
 end Behavioral;
