@@ -35,7 +35,7 @@ component ff_d is
 	signal dec_signal: std_logic_vector (COUNT_WIDTH-1 DOWNTO 0);
 	
 	signal n1 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
-	signal n4 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
+	signal n2 std_logic_vector(COUNT_WIDTH-1 DOWNTO 0);
 
 begin
 
@@ -46,14 +46,14 @@ begin
 		ff_inst : ff_d
 			Port map(
 				d => n1(I),    
-                q => n4(I),     
+                q => n2(I),     
                 
                 clk => clk,
                 reset => reset
 				);
 	end generate
-	count <= signed(n4);
-	n1 <= signed(n4) + signed(inc_signal) - signed(dec_signal)   -- ESEGUO UNA CONVERSIONE IN SIGNED
+	count <= signed(n2);
+	n1 <= signed(n2) + signed(inc_signal) - signed(dec_signal)   -- ESEGUO UNA CONVERSIONE IN SIGNED
 		
 	
 		
