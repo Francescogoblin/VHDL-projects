@@ -52,7 +52,7 @@ begin
                 reset => reset
 				);
 	end generate
-	count <= signed(n2);
+	count <= signed(n2); -- METTO IN COUNT N2 (CASTATO SIGNED)??!!
 	n1 <= signed(n2) + signed(inc_signal) - signed(dec_signal)   -- ESEGUO UNA CONVERSIONE IN SIGNED
 		
 	
