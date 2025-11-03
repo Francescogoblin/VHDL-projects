@@ -51,6 +51,8 @@ my_register_inst : my_register
                to signed(-1, 2 )  when inc_count = '1' and dec_count = '0' else   --METTO TO SIGNED ( VALORE , DIMENSIONE) 
                to signed(0 , 2 ) ;
 
+    count <= reg_out;
+
 end Behavioral;
  
 
