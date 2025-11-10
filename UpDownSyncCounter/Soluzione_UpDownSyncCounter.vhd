@@ -45,7 +45,7 @@ my_register_inst : my_register
           Q      => reg_out;  
           );
 
-    reg_in <= td_logic_vector (signed(reg_out) + addendo) ;  -- NELLO STD_LOGIC_VECTOR LA SOMMA NON È DEFINITA
+    reg_in <= std_logic_vector (signed(reg_out) + addendo) ;  -- NELLO STD_LOGIC_VECTOR LA SOMMA NON È DEFINITA
 
     addendo <= to_signed(1 , 2 )  when inc_count = '1' and dec_count = '0' else   --ATTENZIONE! ADDENDO È UN SIGNED MENTRE .1 È UNO SCALARE
                to signed(-1, 2 )  when inc_count = '1' and dec_count = '0' else   --METTO TO SIGNED ( VALORE , DIMENSIONE) 
