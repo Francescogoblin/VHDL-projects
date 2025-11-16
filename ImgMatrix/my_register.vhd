@@ -16,6 +16,17 @@ end my_register;
 
 architecture Behavioral of my_register is
 
+	component ff_d is
+	Port(
+		reset	: in  std_logic;
+		clk		: in  std_logic;
+
+		D	        : in  std_logic;
+		Q 	        : out std_logic
+	);
+end component;
+
+	
 begin
 
   reg_gen : for I in D'RANGE generate
