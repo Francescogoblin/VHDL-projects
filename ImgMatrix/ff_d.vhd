@@ -13,13 +13,9 @@ end ff_d;
 
 architecture Behavioral of ff_d is
 	
-	signal q_int : std_logic := 'U';  --CREAZIONE SEGNALE
+	
 
 begin
 
-	q_int	<= 	'0' when reset_ff = '1' else
-				d 	when rising_edge(clk) else q_int;
-
-	q <= q_int;
 	
 end Behavioral;
