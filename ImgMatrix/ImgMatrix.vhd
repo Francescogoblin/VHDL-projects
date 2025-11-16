@@ -22,4 +22,10 @@ entity img_matrix is
     );
 end img_matrix;
 
-Architecture Behavioral of img_matrix is : 
+architecture Behavioral of img_matrix is 
+
+
+  
+begin
+
+end Behavioral;
