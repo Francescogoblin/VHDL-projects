@@ -1,14 +1,14 @@
 library IEEE;
-use IEEE.STD_LOGIC.1164;
+use IEEE.STD_LOGIC_1164.all;
 
-entity ShiftRegisterSIPO is
+entity ShiftRegisterSIPOV2 is
    Port(
          reset    : in std_logic;
          clk      : in std_logic;
          data_in  : in std_logic;
-         data_out : in std_logic_vector(3 DOWNTO 0)
+         data_out : out std_logic_vector
         );
-end ShiftRegisterSIPO;
+end ShiftRegisterSIPOV2;
 
 architecture Behavioral of ShiftRegisterSIPO is
 
@@ -22,7 +22,7 @@ process (clk, reset)
 
       n1 <= data_in;
 
-   for I in range 0 to data_out'RANGE-1 loop
+   for I in 0 to data_out'RANGE loop
 
          if reset= '1' then
             n2 <= ( Others => '0');
@@ -35,7 +35,7 @@ process (clk, reset)
             end if;
          end if;
 
-      data_out(I) <= n2(I)
+      data_out <= n2;
             
    end loop;
 
