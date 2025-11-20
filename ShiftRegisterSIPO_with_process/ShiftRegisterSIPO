@@ -12,6 +12,9 @@ end ShiftRegisterSIPO;
 
 architecture Behavioral of ShiftRegisterSIPO is
 
+signal n1 : std_logic;
+signal n2 : std_logic_vector(3 DOWNTO 0);
+
 begin
 
 
