@@ -21,7 +21,7 @@ begin
 process (clk, reset)
 begin
 
-n1 <= data_in
+n1 <= data_in;
 
 for I in range 0 to data_out'RANGE-1 loop
 
