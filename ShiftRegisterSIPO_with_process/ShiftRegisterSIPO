@@ -1,1 +1,29 @@
-library DKCNSCNS
+library IEEE;
+use IEEE.STD_LOGIC.1164;
+
+entity ShiftRegisterSIPO is
+   Port(
+         reset    : in std_logic;
+         clk      : in std_logic;
+         data_in  : in std_logic_vector;
+         data_out : in std_logic
+        );
+end ShiftRegisterSIPO;
+
+architecture Behavioral of ShiftRegisterSIPO is
+
+begin
+
+
+
+
+
+
+
+
+
+
+
+
+
+end Behavioral;
