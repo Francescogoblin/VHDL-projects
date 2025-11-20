@@ -5,8 +5,8 @@ entity ShiftRegisterSIPO is
    Port(
          reset    : in std_logic;
          clk      : in std_logic;
-         data_in  : in std_logic_vector;
-         data_out : in std_logic
+         data_in  : in std_logic;
+         data_out : in std_logic_vector
         );
 end ShiftRegisterSIPO;
 
@@ -15,8 +15,16 @@ architecture Behavioral of ShiftRegisterSIPO is
 begin
 
 
+process (clk, reset)
+begin
+for I in range 0 to data_out'RANGE-1
 
-
+                if reset = '1' then
+                        Q <= '0';
+                elsif rising_edge (clk) then   
+                        Q<=D;
+                end if;
+        end process;
 
 
 
