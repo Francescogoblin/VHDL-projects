@@ -6,7 +6,7 @@ entity ShiftRegisterSIPO is
          reset    : in std_logic;
          clk      : in std_logic;
          data_in  : in std_logic;
-         data_out : in std_logic_vector
+         data_out : in std_logic_vector(3 DOWNTO 0)
         );
 end ShiftRegisterSIPO;
 
