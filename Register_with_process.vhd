@@ -1,30 +1,30 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity my_register is
-    Port (
-        clk   : in  std_logic;
-        reset : in  std_logic;
-        d     : in  std_logic_vector;
-        q     : out std_logic_vector
-    );
-end my_register;
-
-architecture Behavioral of my_register is
+entity my_register_with_process is
   
-    signal n1 : std_logic_vector;  -- creo segnale di supporto
+	Port(
+		reset	: in  std_logic;
+		clk		: in  std_logic;
+
+		D	    : in  std_logic_vector(7 DOWNTO 0);
+		Q 	    : out std_logic_vector(7 DOWNTO 0)
+	);
+end my_register_with_process;
+
+
+architecture Behavioral of my_register_with_process is
 
 begin
 
-    process(clk, reset)
-    begin
-        if reset = '1' then
-            reg <= (Others => '0');          -- azzera il registro
-        elsif rising_edge(clk) then
-            reg <= d;                        -- carica il valore in ingresso
-        end if;
-    end process;
+  process (clk, reset)
+      begin
+          if reset ='1' then
+              Q <= (Others => '0');
+          elsif rising_edge(clk) then
+              Q <= D;
+          end if;
+  end process;
+  
 
-    q <= reg;  -- uscita
-      
-end beh;
+end of Behavioral ; 
