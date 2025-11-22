@@ -5,8 +5,10 @@ entity top_sim is
 --  Port ( );
 end top_sim;
 
+	
 architecture Behavioral of top_sim is
-
+	
+-----------------------------------------------------------------------------------------------------------------------------------
 	constant LARGHEZZA_SR_SIPO : integer := 4; -- Ora prova a cambiare in 32
 
 	component ShiftRegisterSIPOV2 is
@@ -26,10 +28,11 @@ architecture Behavioral of top_sim is
 	signal data_in	: std_logic := '0';
 	-- data_out serve solo per vedere il segnale direttamente in simulazione
 	signal data_out	: std_logic_vector(LARGHEZZA_SR_SIPO-1 DOWNTO 0);
+-----------------------------------------------------------------------------------------------------------------------------------
 
 begin
 
-	SR_inst : ShiftRegisterSIPOV2
+	SR_inst : ShiftRegisterSIPOV2 -- COME PRIMO PASSO INSTANZION LA ENTITY DI CUI VOGLIO CREARE LA SIMULAZIONE
 		Port Map(
 			reset		=> reset,
 			clk			=> clk,
@@ -40,9 +43,9 @@ begin
 
 		);
 
-	clk <= not clk after 5 ns;
+	clk <= not clk after 5 ns; -- DICHIARO IL CLOCK
 
-	process
+	process --INIZIO DEL PROCESS
 	begin
 		wait for 15 ns;
 
