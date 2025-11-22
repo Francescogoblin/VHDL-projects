@@ -53,7 +53,7 @@ begin
 				);
 	end generate
 	count <= n2; -- METTO IN COUNT N2 (CASTATO SIGNED)??!!
-	n1 <= signed(n2) + signed(inc_signal) - signed(dec_signal)   -- ESEGUO UNA CONVERSIONE IN SIGNED
+	n1 <= std_logic_vector (signed(n2) + signed(inc_signal) - signed(dec_signal) )  -- ESEGUO UNA CONVERSIONE IN SIGNED
 		
 	
 		
