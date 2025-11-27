@@ -13,7 +13,7 @@ end ShiftRegisterSIPOV2;
 architecture Behavioral of ShiftRegisterSIPO is
 signal data_out_int : std_logic_vector(data_out'RANGE) := ( Others => '0');      --dobbiamo usare un vettore d'appoggio perchè data_out non può essere riletto
 begin
-data_out_int <= data_out;
+data_out <= data_out_int;
 process ( clk, reset) 
    
    begin
