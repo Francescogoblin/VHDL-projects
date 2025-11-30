@@ -42,7 +42,7 @@ begin
                 end if;
                 
                 t_on_int    <= to_integer (unsigned(t_on)) ;  
-                t_total_int <= to_integer (unsigned(t_total)) ; 
+                t_total_int <= to_integer (unsigned(t_total)) ;  -- Ogni volta ripeto la conversione perchè potrebbero essere cambiati nel frattempo t_on e t_total
             end if;
     end process;    
 
