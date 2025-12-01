@@ -23,6 +23,13 @@ entity FIFO is
 
 end FIFO;
 
+--tips : Costruire la FIFO partendo da una memoria creata tramite un tipo personalizzato.
+--tips : Tenere traccia di dove scrivere e leggere tramite due «signal» che verranno usati come puntatori.
+--tips : Tenere traccia di quanti elementi sono stati immagazzinati tramite un signal.
+--tips : Alcune cose è utile farle sincrone altre no.
+--tips : Provare a farlo sia senza che con variabili per capire come possono modificare lo stile di scrittura
+
+
 architecture Behavioral of FIFO is
   
 begin
