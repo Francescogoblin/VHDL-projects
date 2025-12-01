@@ -29,11 +29,6 @@ end FIFO;
 --tips : Alcune cose è utile farle sincrone altre no.
 --tips : Provare a farlo sia senza che con variabili per capire come possono modificare lo stile di scrittura
 
---IDEA: la memoria è una serie di registri lunga FIFO_DEPTH . In questa memoria sono memorizzati i valori ( din ) che sono std_logic_vector,  e anche la loro posizione. 
---Quindi creo un tipo personalizzato che contiene il valore ( din ) e un numero ( integer? o std_logic) che va da 0 a 15 che corrisponde alla posizione attuale dell registro nella memoria in cui si trova il dato
---Come ultima cosa tratto empty e full
---La prima fase è la creazione della memoria, tramite process
-
 architecture Behavioral of FIFO is
 
  type nuovotipo IS ARRAY (0 TO  FIFO_DEPTH - 1) of  std_logic_vector (din'RANGE);
@@ -44,6 +39,9 @@ architecture Behavioral of FIFO is
     signal contatore_elementi        : integer := 0;
 
 begin
+    process ( clk , reset )
+    
+                                                                  
 
 
 
