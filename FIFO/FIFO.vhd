@@ -12,7 +12,7 @@ entity FIFO is
     reset : in std_logic;
     clk   : in std_logic;
     
-    din   : in std_logic_vector(FIFO_WIDTH-1 DOWNTO 0);
+    din   : in  std_logic_vector(FIFO_WIDTH-1 DOWNTO 0);
     dout  : out std_logic_vector(FIFO_WIDTH-1 DOWNTO 0); --parola in uscita
     
     rd_en : in std_logic; --quando espellere
