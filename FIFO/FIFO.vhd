@@ -41,11 +41,20 @@ architecture Behavioral of FIFO is
     posizione : integer type:
   end record nuovotipo;
 
+  signal n1 nuovotipo ;
+  signal n2 integer ;
 
 
 begin
 
-
+process (clk, reset)
+      begin
+          if reset ='1' then
+              Q <= (Others => '0');
+          elsif rising_edge(clk) then
+              Q <= D;
+          end if;
+  end process;
 
 
 
