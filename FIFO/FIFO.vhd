@@ -36,13 +36,12 @@ end FIFO;
 
 architecture Behavioral of FIFO is
 
-  type nuovotipo is record
-    dato      : std_logic_vector type;
-    posizione : integer type;
-  end record nuovotipo;
+ type nuovotipo IS ARRAY (0 TO  FIFO_DEPTH - 1) of  std_logic_vector (din'RANGE);
 
-  signal cella                 : nuovotipo ; --segnale che memorizza il dato e la sua posizione nella memoria
-  signal quantecosememorizzate : integer ; --segnale per sapere quanti oggetti sono memorizzati 
+    signal memoria    : nuovotipo := (Others => (Others => '0'));
+    signal puntatore_memorizzazione  : integer := 0;
+    signal puntatore_espulsione      : integer := 0;
+    signal contatore_elementi        : integer := 0;
 
 begin
 
