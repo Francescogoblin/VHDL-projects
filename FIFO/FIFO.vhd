@@ -40,6 +40,9 @@ architecture Behavioral of FIFO is
 
 begin
     process ( clk , reset )
+      begin
+          
+                                                                      
     
                                                                   
 
