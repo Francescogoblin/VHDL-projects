@@ -34,8 +34,8 @@ architecture Behavioral of FIFO is
  type nuovotipo IS ARRAY (0 TO  FIFO_DEPTH - 1) of  std_logic_vector (din'RANGE);
 
     signal memoria    : nuovotipo := (Others => (Others => '0'));
-    signal puntatore_memorizzazione  : integer := 0;
-    signal puntatore_espulsione      : integer := 0;
+    signal puntatore_memorizzazione  : integer := 0;  --dove inserire il prossimo dato
+    signal puntatore_espulsione      : integer := 0;  --da dove leggere il prossimo dato
     signal contatore_elementi        : integer := 0;
 
 begin
@@ -43,16 +43,28 @@ begin
       begin
         if reset = 1 then
           memoria <= (Others => (Others => '0'));
+          dout    <= (Others => '0'));
           contatore_elementi <= 0;
           puntatore_memorizzazione <= 0;
           puntatore_espulsione   <= 0;
+
         elsif rising_edge(clk) = 1 then
           
+          if we_en = '1' then
+            memoria(puntatore_memorizzazione) <= din;
+            contatore_elementi = contatore_elementi + 1;
+            puntatore_memorizzazione = puntatore_memorizzazione  +1;
+            
+
+          if re_en = '1' then
+            dout <= memoria(puntatore_espulsione);
+            puntatore_espulsione=puntatore_espulsione+1;
                                                                       
-                                                                      
+          end if
+            
                                                                       
           
-                                                                      
+        end if                                                              
     
                                                                   
 
