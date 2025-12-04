@@ -42,8 +42,7 @@ begin
     process ( clk , reset )
       begin
         if reset = 1 then
-          memoria <= (Others => (Others => '0'));
-          dout    <= (Others => '0'));
+          dout <= (Others =>0);
           contatore_elementi <= 0;
           puntatore_memorizzazione <= 0;
           puntatore_espulsione   <= 0;
