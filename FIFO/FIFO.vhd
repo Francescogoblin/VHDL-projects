@@ -58,20 +58,20 @@ begin
 
            if rd_en = '1' and cont /= '0' then
             dout <= memoria(p_esp);
-            cont = cont - 1;                                                          
-            p_esp = p_esp + 1;
+            cont <= cont - 1;                                                          
+            p_esp <= p_esp + 1;
                                                                      
               if p_esp = FIFO_DEPTH then
-                p_esp = 0  ;
+                p_esp <= 0  ;
               end if;                                                        
                                                                       
           elsif wr_en = '1'  and cont /= FIFO_DEPTH then
             memoria(p_mem) <= din;
-            cont = cont + 1;
-            p_mem = p_mem  +1;
+            cont <= cont + 1;
+            p_mem <= p_mem  +1;
                                                                       
-              if p_mem = FIFO_DEPTH then
-                p_mem = 0  ;
+              if p_mem <= FIFO_DEPTH then
+                p_mem <= 0  ;
               end if;
                                                                         
           end if;       
