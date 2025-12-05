@@ -34,7 +34,7 @@ architecture Behavioral of FIFO is
  type nuovotipo IS ARRAY (0 TO  FIFO_DEPTH - 1) of  std_logic_vector (din'RANGE);
 
     signal memoria    : nuovotipo := (Others => (Others => '0'));
-    signal p_mem : integer := 0;  --dove inserire il prossimo dato
+    signal p_mem      : integer := 0;  --dove inserire il prossimo dato
     signal p_esp      : integer := 0;  --da dove leggere il prossimo dato
     signal cont       : integer := 0;
 
@@ -49,7 +49,7 @@ begin
 
         elsif rising_edge(clk) = 1 then
 
-           if re_en = '1' and cont /= '0' then
+           if rd_en = '1' and cont /= '0' then
             dout <= memoria(p_esp);
             cont = cont - 1;                                                          
             p_esp = p_esp + 1;
@@ -58,7 +58,7 @@ begin
                 p_esp = 0  ;
               end if;                                                        
                                                                       
-          elsif we_en = '1'  and cont /= FIFO_DEPTH then
+          elsif wr_en = '1'  and cont /= FIFO_DEPTH then
             memoria(p_mem) <= din;
             cont = cont + 1;
             p_mem = p_mem  +1;
