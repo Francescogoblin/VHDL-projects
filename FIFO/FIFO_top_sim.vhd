@@ -1,0 +1,81 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity TOP_sim is
+  Generic(
+    FIFO_WIDTH : integer := 8;
+    FIFO_DEPTH : integer := 16
+  );
+end TOP_sim;
+
+architecture Behavioral of TOP_sim is
+  signal clk : std_logic := '0';
+  signal rd_en, wr_en : std_logic := '0';
+  signal reset : std_logic := '1';
+  
+  signal din : std_logic_vector(FIFO_WIDTH-1 DOWNTO 0) := (Others => '0');
+
+  component FIFO is
+    Port(
+      reset : in std_logic;
+      clk   : in std_logic;
+      din   : in std_logic_vector(FIFO_WIDTH-1 DOWNTO 0);
+      dout  : out std_logic_vector(FIFO_WIDTH-1 DOWNTO 0);
+      rd_en : in std_logic;
+      wr_en : in std_logic;
+      full  : out std_logic;
+      empty : out std_logic
+    );
+  end component;
+begin
+  dut: FIFO port map(
+    reset => reset,
+    clk => clk,
+    din => din,
+    rd_en => rd_en,
+    wr_en => wr_en
+  );
+
+  clk <= not clk after 20 ns;
+
+    drive_reset : process
+      begin
+        reset <= '1';
+        wait for 20 ns;
+        reset <= '0';
+        wait;
+      end process;
+
+    drive_data : process
+      begin
+        wait for 20 ns;
+        din <= "01001010";
+        wr_en <= '1';
+        wait for 40 ns;
+        wr_en <= '0';
+
+        wait for 40 ns;
+        din <= "00110000";
+        wr_en <= '1';
+        wait for 40 ns;
+        wr_en <= '0';
+
+        wait for 40 ns;
+        rd_en <= '1';
+        wait for 40 ns;
+        rd_en <= '0';
+        
+        wait for 40 ns;
+        rd_en <= '1';
+        wait for 40 ns;
+        rd_en <= '0';
+
+        wait;
+      end process;
+
+
+
+
+
+
+end Behavioral;
