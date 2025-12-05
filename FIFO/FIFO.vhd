@@ -39,6 +39,13 @@ architecture Behavioral of FIFO is
     signal cont       : integer := 0;
 
 begin
+
+  if cont = 0 then
+    empty <= '1';
+  elsif cont = FIFO_DEPTH -1 then
+    full  <= '1';
+
+                                                                      
     process ( clk , reset )
       begin
         if reset = 1 then
@@ -70,11 +77,5 @@ begin
           end if;       
         end if;                                                              
     
-                                                                  
-
-
-
-
-
 
 end Behavioral;
