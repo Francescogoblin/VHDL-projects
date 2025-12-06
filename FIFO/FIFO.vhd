@@ -31,9 +31,9 @@ end FIFO;
 
 architecture Behavioral of FIFO is
 
- type nuovotipo IS ARRAY (0 TO  FIFO_DEPTH - 1) of  std_logic_vector (din'RANGE);
+ type newtype IS ARRAY (0 TO  FIFO_DEPTH - 1) of  std_logic_vector (din'RANGE);
 
-    signal memoria    : nuovotipo := (Others => (Others => '0'));
+    signal memoria    : newtype := (Others => (Others => '0'));
     signal p_mem      : integer := 0;  --dove inserire il prossimo dato
     signal p_esp      : integer := 0;  --da dove leggere il prossimo dato
     signal cont       : integer := 0;
