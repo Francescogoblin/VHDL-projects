@@ -28,7 +28,7 @@ architecture Behavioral of TOP_sim is
     );
   end component;
 begin
-  dut: FIFO port map(
+  INST: FIFO port map(
     reset => reset,
     clk => clk,
     din => din,
@@ -36,9 +36,9 @@ begin
     wr_en => wr_en
   );
 
-  clk <= not clk after 20 ns;
+  clk <= not clk after 5 ns;
 
-    drive_reset : process
+    reset_process : process
       begin
         reset <= '1';
         wait for 20 ns;
@@ -46,7 +46,7 @@ begin
         wait;
       end process;
 
-    drive_data : process
+    process_vero : process
       begin
         wait for 20 ns;
         din <= "01001010";
