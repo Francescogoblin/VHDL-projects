@@ -26,7 +26,7 @@ end Mealy_EdgeDetector;
         if reset = '1' then 
           state <= rst;
           upEdge <= '0';
-          downEdge <= '1';
+          downEdge <= '0';
         end if;
         if rising_edge(clk) then
           state <= nextstate;
@@ -38,6 +38,7 @@ end Mealy_EdgeDetector;
      -------------------------------------------------------------------------------------------------------------------------     
     process ( signal_in , state ) 
         begin
+        
           case state is
             
             when rst =>
