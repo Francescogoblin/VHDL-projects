@@ -1,20 +1,20 @@
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity Moore_EdgeDetector is
+entity Mealy_EdgeDetector is
   Port( 
     clk : in std_logic;
     reset : in std_logic;
 
     signal_in : in std_logic;
     upEdge    : out std_logic;
-    downEdge  : out std_logic;
+    downEdge  : out std_logic
     );
 end EdgeDetector;
 
-  architecture Behavioral of EdgeDetector is
+  architecture Behavioral of Mealy_EdgeDetector is
 
-  type nuovotipo is (reset , up, down ) ; 
+  type nuovotipo is (rst , up, down ) ; 
   signal state , nextstate : nuovotipo;
 
     begin
@@ -24,10 +24,11 @@ end EdgeDetector;
     process ( clk , reset ) 
       begin
         if reset = 1 then 
-          state <= reset;
+          state <= rst;
           upEdge <= '0';
           downEdge <= '1';
-        elsif rising_edge(clk) = 1 then
+        end if;
+        if rising_edge(clk) then
           state <= nextstate;
         end if;
           
@@ -41,7 +42,7 @@ end EdgeDetector;
             
             when reset =>
               if signal_in = '0' then
-                nextstate <= reset;
+                nextstate <= rst;
                 upEdge   <= '0';
                 downEdge <= '0';
               elsif signal_in = '1' then
