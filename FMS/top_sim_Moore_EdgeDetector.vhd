@@ -7,7 +7,7 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	component EdgeDetector is
+	component Moore_EdgeDetector is
 		Port (
 			clk		: in std_logic;
 			reset 	: in std_logic;
@@ -26,7 +26,7 @@ architecture Behavioral of top_sim is
 
 begin
 
-	EdgeDetector_inst : EdgeDetector
+	EdgeDetector_inst : Moore_EdgeDetector
 		Port Map(
 			reset		=> reset,
 			clk			=> clk,
