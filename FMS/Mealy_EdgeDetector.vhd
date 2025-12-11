@@ -10,7 +10,7 @@ entity Mealy_EdgeDetector is
     upEdge    : out std_logic;
     downEdge  : out std_logic
     );
-end EdgeDetector;
+end Mealy_EdgeDetector;
 
   architecture Behavioral of Mealy_EdgeDetector is
 
@@ -23,7 +23,7 @@ end EdgeDetector;
     -------------------------------------------------------------------------------------------------------------------------     
     process ( clk , reset ) 
       begin
-        if reset = 1 then 
+        if reset = '1' then 
           state <= rst;
           upEdge <= '0';
           downEdge <= '1';
@@ -40,7 +40,7 @@ end EdgeDetector;
         begin
           case state is
             
-            when reset =>
+            when rst =>
               if signal_in = '0' then
                 nextstate <= rst;
                 upEdge   <= '0';
