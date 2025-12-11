@@ -14,8 +14,86 @@ end EdgeDetector;
 
   architecture Behavioral of EdgeDetector is
 
-    begin
+  type nuovotipo is (reset , parking , up, down ) ; 
+  signal state , nextstate : nuovotipo;
 
+    begin
+   
+    --STATE MEMORY
+    -------------------------------------------------------------------------------------------------------------------------     
+    process ( clk , reset ) 
+      begin
+        if reset = 1 then 
+          state <= reset;
+        elsif rising_edge(clk) = 1 then
+          state <= nextstate;
+        end if;
+          
+    end process;
+    -------------------------------------------------------------------------------------------------------------------------     
+
+          
+    --OUTPUT LOGIC  
+    -------------------------------------------------------------------------------------------------------------------------     
+    process ( state)
+        begin
+          case state is
+            when reset =>
+              upEdge   <= '0';
+              downEdge <= '0';
+            when up =>
+              upEdge   <= '1';
+              downEdge <= '0';
+            when down =>
+              upEdge   <= '0';
+              downEdge <= '1';
+            when parking =>
+              upEdge   <= '0';
+              downEdge <= '0';
+    end process;
+     -------------------------------------------------------------------------------------------------------------------------     
+
+
+     --TRANSITION LOGIC
+     -------------------------------------------------------------------------------------------------------------------------     
+    process ( signal_in , state ) 
+        begin
+          case state is
+            
+            when reset =>
+              if signal_in = '0' then
+                nextstate <= reset;
+              elsif signal_in = '1' then
+                nextstate <= up;
+              end if;
+                
+            when up =>
+              if signal_in = '0' then
+                nextstate <= down;
+              elsif signal_in = '1' then
+                nextstate <= parking;
+              end if;
+                      
+            when down =>
+              if signal_in = '0' then
+                nextstate <= reset;
+              elsif signal_in = '1' then
+                nextstate <= up;
+              end if;
+
+            when parking =>
+              if signal_in = '0' then
+                nextstate <= down;
+              elsif signal_in = '1' then
+                nextstate <= parking;
+              end if;
+
+   end process;
+
+     -------------------------------------------------------------------------------------------------------------------------     
+
+
+      
 
 end Behavioral;
 
