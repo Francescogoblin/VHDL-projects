@@ -1,7 +1,7 @@
 Library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity EdgeDetector is
+entity Moore_EdgeDetector is
   Port( 
     clk : in std_logic;
     reset : in std_logic;
