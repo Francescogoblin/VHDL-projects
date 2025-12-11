@@ -21,14 +21,9 @@ end Mealy_EdgeDetector;
     ------------------------------------------------------------------------------------------------------------------------
     --STATE MEMORY
     -------------------------------------------------------------------------------------------------------------------------     
-    process ( clk , reset ) 
+    process ( clk ) 
       begin
-        if reset = '1' then 
-          state <= rst;
-          upEdge <= '0';
-          downEdge <= '0';
-        end if;
-        if rising_edge(clk) then
+          if rising_edge(clk) then
           state <= nextstate;
         end if;
           
