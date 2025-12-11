@@ -54,7 +54,7 @@ begin
           p_mem <= 0;
           p_esp  <= 0;
 
-        elsif rising_edge(clk) = 1 then
+        elsif rising_edge(clk) then
 
            if rd_en = '1' and cont > 0 then
             dout <= memoria(p_esp);
