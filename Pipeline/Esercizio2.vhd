@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity esercizio1 is
+entity esercizio2 is
   Port(
     input_a : in std_logic_vector ( 31 DOWNTO 0);
     input_b : in std_logic_vector ( 31 DOWNTO 0);
@@ -11,7 +11,7 @@ entity esercizio1 is
 
     result : out std_logic_vector ( 31 DOWNTO 0)
   );
-end esercizio1;
+end esercizio2;
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
   Architecture Behavioral of esercizio1 is 
@@ -50,29 +50,16 @@ end esercizio1;
 	      result	<= n2
       );
 
-      result <= n2;
+      result <= Q;
 
     process ( clk , reset ) 
       begin
         if reset = '1' then
-          n2<= (Others => '0');
           Q <= (Others => '0');
         elsif rising_edge(clk) then
           Q<=n2;
-          
+        end if;
       end process;
         
  end Behavioral;   
-
-
-
-
-
-
-
-
-
-
-
-
-        
+    
