@@ -11,7 +11,7 @@ entity Esercizio1 is
 
     result : out std_logic_vector ( 31 DOWNTO 0)
   );
-end esercizio1;
+end Esercizio1;
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
   Architecture Behavioral of Esercizio1 is 
