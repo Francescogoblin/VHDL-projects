@@ -4,12 +4,12 @@ use IEEE.numeric_std.all;
 
 entity Esercizio1 is
   Port(
-    input_a : in std_logic_vector ( 31 DOWNTO 0);
-    input_b : in std_logic_vector ( 31 DOWNTO 0);
-    input_c : in std_logic_vector ( 31 DOWNTO 0);
+    input_a : in std_logic_vector ( 31 DOWNTO 0) ;
+    input_b : in std_logic_vector ( 31 DOWNTO 0) ;
+    input_c : in std_logic_vector ( 31 DOWNTO 0) ;
     clk     : in std_logic;
-
-    result : out std_logic_vector ( 31 DOWNTO 0)
+    reset	: in std_logic;
+    result  : out std_logic_vector ( 31 DOWNTO 0)
   );
 end Esercizio1;
 -----------------------------------------------------------------------------------------------
@@ -23,6 +23,7 @@ end Esercizio1;
 	result			: out unsigned(31 DOWNTO 0)
 	);
     end component;
+    
     component adder is
 	Port (
 	input_a			: in unsigned(31 DOWNTO 0);
