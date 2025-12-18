@@ -31,9 +31,11 @@ end Esercizio2;
 	);
     end component;
 
-    signal n1 : unsigned(31 DOWNTO 0);
-    signal n2 : unsigned(31 DOWNTO 0);
-
+    signal n1 : unsigned(31 DOWNTO 0); -- segnale per l'uscita del multiplier
+    signal n2 : unsigned(31 DOWNTO 0); -- segnale per l'uscita dell'adder
+	signal n3 : unsigned(31 DOWNTO 0); -- segnale per spezzare l'uscita del multiplier
+    signal n4 : unsigned(31 DOWNTO 0); -- segnale per spezzare l'ingresso dell'adder
+	
     begin
 
     MULTIPLIER_INST : multiplier
@@ -45,19 +47,20 @@ end Esercizio2;
       
     ADDER_INST : adder
       Port map ( 
-          input_a   => unsigned(input_c),
-	      input_b	=> n1,
+          input_a   => n4,
+	      input_b	=> n3,
 	      result	=> n2
       );
 
-      result <= std_logic_vector(n2);
 
     process ( clk , reset ) 
       begin
         if reset = '1' then
-          Q <= (Others => '0');
+          result <= (Others => '0');
         elsif rising_edge(clk) then
-          Q<=n2;
+          result<=std_logic_vector(n2);
+		  n3<=n2;
+		  n4<=unsigned(input_c);
         end if;
       end process;
         
