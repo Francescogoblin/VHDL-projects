@@ -30,15 +30,9 @@ end Esercizio4;
 	result			: out unsigned(31 DOWNTO 0)
 	);
     end component;
-
-    signal n1 : unsigned(31 DOWNTO 0); -- segnale per l'uscita del multiplier
-    signal n2 : unsigned(31 DOWNTO 0); -- segnale per l'uscita dell'adder
-	signal n3 : unsigned(31 DOWNTO 0); -- segnale per spezzare l'uscita del multiplier
-    signal n4 : unsigned(31 DOWNTO 0); -- segnale per spezzare l'ingresso dell'adder
 	
     begin
 
     
-        
- end Behavioral;   
+    end Behavioral;   
     
