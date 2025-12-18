@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity Esercizio2 is
+entity Esercizio3 is
   Port(
     input_a : in std_logic_vector ( 31 DOWNTO 0);
     input_b : in std_logic_vector ( 31 DOWNTO 0);
@@ -11,10 +11,10 @@ entity Esercizio2 is
 
     result : out std_logic_vector ( 31 DOWNTO 0)
   );
-end Esercizio2;
+end Esercizio3;
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
-  Architecture Behavioral of Esercizio2 is 
+  Architecture Behavioral of Esercizio3 is 
   
     component multiplier is
 	Port (
