@@ -11,7 +11,7 @@ architecture Behavioral of top_sim is
 
 	constant CLK_PERIOD : time := 10 ns;
 
-	component Esercizio1 is
+	component Esercizio2 is
 		Port (
 			reset	: in std_logic;
 			clk		: in std_logic;
@@ -33,7 +33,7 @@ architecture Behavioral of top_sim is
 
 begin
 
-	Esercizio1_inst : Esercizio1
+	Esercizio1_inst : Esercizio2
 		Port Map(
 			reset	=> reset,
 			clk		=> clk,
