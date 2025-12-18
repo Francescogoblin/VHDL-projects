@@ -32,7 +32,7 @@ architecture Behavioral of top_sim is
 
 begin
 
-	Esercizio3_inst : Esercizio3
+	Esercizio3_inst : Esercizio4
 		Port Map(
 			reset	=> reset,
 			clk		=> clk,
