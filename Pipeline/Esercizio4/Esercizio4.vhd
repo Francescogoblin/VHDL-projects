@@ -14,7 +14,7 @@ entity Esercizio4 is
 end Esercizio4;
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
-  Architecture Behavioral of Esercizio3 is 
+  Architecture Behavioral of Esercizio4 is 
   
     component multiplier is
 	Port (
@@ -33,9 +33,23 @@ end Esercizio4;
 	
 	signal n1 : unsigned ( 31 DOWNTO 0);
 	signal n2 : unsigned ( 31 DOWNTO 0);
-	signal n3 : unsigned ( 31 DOWNTO 0);
+	signal  : std_logic;
 	  
     begin
-    
+
+	MULTIPLIER_INST_1 : multiplier
+		Port map(
+			input_a =>,
+			input_b =>,
+			result =>
+			);
+
+	MULTIPLIER_INST_2 : multiplier
+		Port map(
+			input_a =>,
+			input_b =>,
+			result =>
+			);
+		
     end Behavioral;   
     
