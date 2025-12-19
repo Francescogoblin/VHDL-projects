@@ -31,8 +31,11 @@ end Esercizio4;
 	);
     end component;
 	
+	signal n1 : unsigned ( 31 DOWNTO 0);
+	signal n2 : unsigned ( 31 DOWNTO 0);
+	signal n3 : unsigned ( 31 DOWNTO 0);
+	  
     begin
-
     
     end Behavioral;   
     
