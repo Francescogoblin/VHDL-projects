@@ -8,7 +8,7 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	constant CLK_PERIOD : time := 15 ns;
+	constant CLK_PERIOD : time := 20 ns;
 
 	component Esercizio3 is
 		Port (
