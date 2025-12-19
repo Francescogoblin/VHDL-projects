@@ -48,9 +48,9 @@ end Esercizio1;
       Port map ( 
           input_a   => unsigned(input_c),
 	      input_b	=> n1,
-	      result	=> n2
+	      std_logic_vector(result)	=> n2
       );
 
-      result <= std_logic_vector(n2);
+      result <= n2;
       
  end Behavioral;   
