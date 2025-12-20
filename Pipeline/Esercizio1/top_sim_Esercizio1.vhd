@@ -8,7 +8,7 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	constant CLK_PERIOD : time := 23 ns;
+	constant CLK_PERIOD : time := 23 ns; -- il Tpd del circuito è 22ns , quindi questo è anche il periodo minimo ( e relativa frequenza massima) del clock. Quindi scelto un Tclk > 22ns
 
 	component Esercizio1 is
 		Port (
