@@ -8,7 +8,8 @@ entity Esercizio3 is
     input_b : in std_logic_vector ( 31 DOWNTO 0);
     input_c : in std_logic_vector ( 31 DOWNTO 0);
     clk     : in std_logic;
-
+	reset 	: in std_logic;
+	  	
     result : out std_logic_vector ( 31 DOWNTO 0)
   );
 end Esercizio3;
