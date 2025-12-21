@@ -8,13 +8,12 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	constant CLK_PERIOD : time := 10 ns;
+	constant CLK_PERIOD : time := 10 ns; -- per poter così , alla fine , lavorare a 100MHz coem volevamo
 
 	component Esercizio3 is
 		Port (
 			reset	: in std_logic;
 			clk		: in std_logic;
-
 
 			input_a	: in std_logic_vector(31 DOWNTO 0);
 			input_b	: in std_logic_vector(31 DOWNTO 0);
