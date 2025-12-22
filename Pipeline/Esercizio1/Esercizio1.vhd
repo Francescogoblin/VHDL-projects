@@ -2,6 +2,8 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
+-- Tpd = 22ns
+
 entity Esercizio1 is
   Port(
     input_a : in std_logic_vector ( 31 DOWNTO 0) ;
