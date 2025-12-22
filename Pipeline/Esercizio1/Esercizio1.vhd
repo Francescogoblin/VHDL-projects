@@ -33,8 +33,7 @@ end Esercizio1;
 	);
     end component;
 
-    signal n1 : unsigned(31 DOWNTO 0);
-    signal n2 : unsigned(31 DOWNTO 0);
+    signal out_mul : unsigned(31 DOWNTO 0);
 
     begin
 
@@ -42,16 +41,14 @@ end Esercizio1;
       Port map ( 
           input_a   => unsigned(input_a),
 	      input_b	=> unsigned(input_b),
-	      result	=> n1
+	      result	=> out_mul
       );
       
     ADDER_INST : adder
       Port map ( 
           input_a   => unsigned(input_c),
-	      input_b	=> n1,
-	      result	=> n2
+	      input_b	=> out_mul
+	      std_logic_vector(result)	=> result
       );
-
-      result <= std_logic_vector(n2) ;
       
  end Behavioral;   
