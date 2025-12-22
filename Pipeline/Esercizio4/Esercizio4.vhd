@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- SI VUOLE LAVORARE A 100MHZ , USO LA TECNICA DELL'INTERLEAVING
+-- per ogni moltiplicatore che andiamo a creare dobbiamo garantire che i suoi dati di ingresso stiano stabili almeno per il suo tempo di propagazione creiamo due registri
 
 entity Esercizio4 is
   Port(
