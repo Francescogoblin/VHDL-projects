@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 
 -- Latenza= 1 ciclo di clock = Tclk.  Throughput del sistema --> dipende dal tempo di clock. Se ad esempio ho un clock a 45MHz il throughput è 45MHz * 32bit al secondo = 45MHz * 4Byte al secondo = 1440 MBit/sec 
 
-entity Esercizio1 is
+entity Esercizio2 is
   Port(
     input_a : in std_logic_vector ( 31 DOWNTO 0) ;
     input_b : in std_logic_vector ( 31 DOWNTO 0) ;
@@ -15,10 +15,10 @@ entity Esercizio1 is
 	  
     result  : out std_logic_vector ( 31 DOWNTO 0)
   );
-end Esercizio1;
+end Esercizio2;
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
-  Architecture Behavioral of Esercizio1 is 
+  Architecture Behavioral of Esercizio2 is 
   
     component multiplier is
 	Port (
