@@ -8,7 +8,7 @@ end top_sim;
 
 architecture Behavioral of top_sim is
 
-	constant CLK_PERIOD : time := 20 ns;
+	constant CLK_PERIOD : time := 20 ns; --ore la simulazione funziona anche a 20ns ma semplicemente abbiamo le uscite che non corrispondono agli ingressi subito ma dopo 2 cicli di clock ( QUESTO E' LO STADIO DI PIPELINE)
 
 	component Esercizio3 is
 		Port (
