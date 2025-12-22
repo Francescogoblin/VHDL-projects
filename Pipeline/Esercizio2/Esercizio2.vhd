@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- Tpd = 22ns
+-- Latenza= 1 ciclo di clock = Tclk.  Throughput del sistema --> dipende dal tempo di clock. Se ad esempio ho un clock a 45MHz il throughput è 45MHz * 32bit al secondo = 45MHz * 4Byte al secondo = 1440 MBit/sec 
 
 entity Esercizio1 is
   Port(
@@ -36,7 +36,8 @@ end Esercizio1;
 	);
     end component;
 
-    signal out_mul : unsigned(31 DOWNTO 0);
+    signal out_mul   : unsigned(31 DOWNTO 0);
+	signal out_adder : unsigned(31 DOWNTO 0);
 
     begin
 
@@ -51,8 +52,17 @@ end Esercizio1;
       Port map ( 
           input_a   => unsigned(input_c),
 	      input_b	=> out_mul
-	      std_logic_vector(result)	=> result
+	      result	=> out_adder
       );
+
+		process ( clk  , reset ) 
+		begin
+				if reset = '1' then
+					result <= (Others => '0');
+				elsif rising_edge(clk) = '1' then
+					result <= std_logic_vector(out_add);
+				end if;
+		end process;
       
  end Behavioral;   
     
