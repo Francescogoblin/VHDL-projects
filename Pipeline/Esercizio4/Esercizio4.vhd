@@ -36,37 +36,99 @@ end Esercizio4;
 	);
     end component;
 
-    signal out_mul   : unsigned(31 DOWNTO 0);
-	signal out_adder : unsigned(31 DOWNTO 0);
-	signal out_mul_reg : unsigned(31 DOWNTO 0);
-	signal input_c_reg : unsigned(31 DOWNTO 0);
-    
+	signal input_a_replica_a , input_a_replica_b , input_b_replica_a , input_b_replica_b  : unsigned(31 DOWNTO 0);
+	signal out_mul_rep_a , out_mul_rep_b : unsigned( 31 DOWNTO 0 );
+	signal out_mul , out_add : unsigned( 31 DOWNTO 0 );
+    signal En_a : std_logic := '0';
+ 	signal En_a : std_logic := '1';
+
+	type SR_type is array (o TO 2 ) of std_logic_vector( 31 DOWNTO 0 ) ;
+	signal SR_input_c : SR_type 
+	
 begin
 
-    MULTIPLIER_INST : multiplier
+    MULTIPLIER_INST_a : multiplier
       Port map ( 
-          input_a   => unsigned(input_a),
-	      input_b	=> unsigned(input_b),
-	      result	=> out_mul
+          input_a   => input_a_replica_a,
+	      input_b	=> input_b_replica_a,
+	      result	=> out_mul_rep_a
       );
+
+	 MULTIPLIER_INST_b : multiplier
+      Port map ( 
+          input_a   => input_a_replica_b,
+	      input_b	=> input_b_replica_b,
+	      result	=> out_mul_rep_b
+	      );
       
     ADDER_INST : adder
       Port map ( 
-          input_a   => input_c_reg,
-	      input_b	=> out_mul_reg
-	      result	=> out_adder
+          input_a   => unsigned(SR_input_c(2)),
+	      input_b	=> out_mul,
+	      result	=> out_add
       );
 
-		process ( clk  , reset ) 
+		process_smistamento_ingressi : process ( clk  , reset ) 
 		begin
 				if reset = '1' then
 					result <= (Others => '0');
+			
 				elsif rising_edge(clk) = '1' then
-					result <= std_logic_vector(out_add);
-					input_c_reg <= unsigned(input_c);
-					out_mul_reg <= out_mul
+					
+					if En_a = '1' then
+						input_a_replica_a <= unsigned (input_a);
+						input_b_replica_a <= unsigned (input_b);
+					else 
+						input_a_replica_a <= input_a_replica_a;
+						input_b_replica_a <= input_b_replica_a;
+					end if;
+
+					if En_b = '1' then
+						input_a_replica_b <= unsigned (input_a);
+						input_b_replica_b <= unsigned (input_b);
+					else 
+						input_a_replica_b <= input_a_replica_b;
+						input_b_replica_b <= input_b_replica_b;
+					end if;				
+		end process;
+
+						
+		generation_ enable : process ( clk , reset ) 
+		begin 
+				if reset = '1' then
+					En_a <= '0';
+					En_b <= '1';
+				elsif rising_edge(clk) = '1' then
+					En_a <= not ( En_a) ;
+					En_b <= not ( En_b) ;
 				end if;
 		end process;
+
+
+		process_multiplexer : process ( clk ) 
+		begin
+				if rising_edge(clk) = '1' then
+					if En_a = '0' then
+						 out_mul <= out_mul_replica_a;
+					else out_mul <= out_mul_replica_b;
+				end if ;
+		end process;
+
+		process_shift_register_for_retarding : process ( clk  )  --ritardo di 3 cicli di clock
+		begin
+				if rising_edge(clk) = '1' then
+					SR_input_c(0) <= input_c;
+					SR_input_c( 1 TO 2) <= SR_input_c( 0 TO 1);
+				end if ;
+		end process;
+
+		process_exit : process ( clk  ) 
+		begin
+				if rising_edge(clk) = '1' then
+					result <= std_logic_vector(out_add);
+				end if ;
+		end process;
+		
       
  end Behavioral;   
     
