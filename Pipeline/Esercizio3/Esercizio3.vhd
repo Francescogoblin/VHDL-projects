@@ -37,8 +37,10 @@ end Esercizio3;
 
     signal out_mul   : unsigned(31 DOWNTO 0);
 	signal out_adder : unsigned(31 DOWNTO 0);
-
-    begin
+	signal out_mul_reg : unsigned(31 DOWNTO 0);
+	signal input_c_reg : unsigned(31 DOWNTO 0);
+    
+begin
 
     MULTIPLIER_INST : multiplier
       Port map ( 
@@ -49,8 +51,8 @@ end Esercizio3;
       
     ADDER_INST : adder
       Port map ( 
-          input_a   => unsigned(input_c),
-	      input_b	=> out_mul
+          input_a   => input_c_reg,
+	      input_b	=> out_mul_reg
 	      result	=> out_adder
       );
 
@@ -60,6 +62,8 @@ end Esercizio3;
 					result <= (Others => '0');
 				elsif rising_edge(clk) = '1' then
 					result <= std_logic_vector(out_add);
+					input_c_reg <= unsigned(input_c);
+					out_mul_reg <= out_mul
 				end if;
 		end process;
       
