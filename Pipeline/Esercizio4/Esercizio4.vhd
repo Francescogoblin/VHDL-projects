@@ -3,6 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 -- per ogni moltiplicatore che andiamo a creare dobbiamo garantire che i suoi dati di ingresso stiano stabili almeno per il suo tempo di propagazione creiamo due registri
+-- non uso un latch al posto dei due registri perchè quando il latch è trasparente data_in dovrebbe essere stabile per quello scritto sopra, ma io non posso garantirlo
 
 entity Esercizio4 is
   Port(
