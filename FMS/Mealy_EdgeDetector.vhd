@@ -23,6 +23,9 @@ end Mealy_EdgeDetector;
     -------------------------------------------------------------------------------------------------------------------------     
     process ( clk ) 
       begin
+          if reset = '1' then
+            state <= rst;
+        end if;
           if rising_edge(clk) then
           state <= nextstate;
         end if;
