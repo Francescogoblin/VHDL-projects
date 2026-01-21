@@ -15,8 +15,8 @@ end Moore_EdgeDetector;
 
   architecture Behavioral of Moore_EdgeDetector is
 
-  type nuovotipo is ( rst , parking , up, down ); 
-  signal state , nextstate : nuovotipo;
+  type nuovotipo is ( rst , parking , up, down ); --ogni stato può assumere uno di questi valori
+  signal state , nextstate : nuovotipo;           --creazione dei due segnali di stato e del nuovo stato, entrambi del tipo appena creato
 
     begin
     ------------------------------------------------------------------------------------------------------------------------- 
@@ -24,11 +24,11 @@ end Moore_EdgeDetector;
     -------------------------------------------------------------------------------------------------------------------------     
     process ( clk , reset ) 
       begin
-        if reset = '1' then 
+        if reset = '1' then --semplice procedura: si ritorna allo stato di reset se il reset è alto
           state <= rst;
         end if;
         
-        if rising_edge(clk) then
+        if rising_edge(clk) then  -- ogni volta che clocka si passa al nuovo stato
           state <= nextstate;
         end if;
           
@@ -36,7 +36,7 @@ end Moore_EdgeDetector;
     -------------------------------------------------------------------------------------------------------------------------     
     --OUTPUT LOGIC : si calcola l'uscita
     -------------------------------------------------------------------------------------------------------------------------     
-    process ( state)
+    process ( state) -- faccio questa operazione ogni volta che cambia lo stato, perchè sennò non ha senso, e l'uscita rimane uguale a prima
         begin
           case state is
             when rst =>
