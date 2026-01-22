@@ -2,7 +2,8 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- Tpd = 22ns
+-- calcolo il tempo di propagazione della logica combinatoria andando semplicemente a vedere il percorso più lungo : Tpd = 15ns+7ns = 22ns
+-- il tempo di contaminazione invece è il minore possibile,  ovvero quando cambio c, quindi Tcd = 2ns
 
 entity Esercizio1 is
   Port(
