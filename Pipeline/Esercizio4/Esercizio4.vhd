@@ -43,8 +43,8 @@ end Esercizio4;
 	);
     end component;
 
-	signal input_a_replica_a , input_a_replica_b , input_b_replica_a , input_b_replica_b  : unsigned(31 DOWNTO 0);
-	signal out_mul_rep_a , out_mul_rep_b : unsigned( 31 DOWNTO 0 );
+	signal input_a_replica_x , input_a_replica_y ,     input_b_replica_x , input_b_replica_y      : unsigned(31 DOWNTO 0);
+	signal out_mul_rep_x , out_mul_rep_y : unsigned( 31 DOWNTO 0 );
 	signal out_mul , out_add : unsigned( 31 DOWNTO 0 );
     signal En_a : std_logic := '0';
  	signal En_a : std_logic := '1';
@@ -56,16 +56,16 @@ begin
 
     MULTIPLIER_INST_a : multiplier
       Port map ( 
-          input_a   => input_a_replica_a,
-	      input_b	=> input_b_replica_a,
-	      result	=> out_mul_rep_a
+          input_a   => input_a_replica_x,
+	      input_b	=> input_b_replica_x,
+	      result	=> out_mul_rep_x
       );
 
 	 MULTIPLIER_INST_b : multiplier
       Port map ( 
-          input_a   => input_a_replica_b,
-	      input_b	=> input_b_replica_b,
-	      result	=> out_mul_rep_b
+          input_a   => input_a_replica_y,
+	      input_b	=> input_b_replica_y,
+	      result	=> out_mul_rep_y
 	      );
       
     ADDER_INST : adder
@@ -83,22 +83,25 @@ begin
 				elsif rising_edge(clk) = '1' then
 					
 					if En_a = '1' then
-						input_a_replica_a <= unsigned (input_a);
-						input_b_replica_a <= unsigned (input_b);
+						input_a_replica_x <= unsigned (input_a);
+						input_b_replica_x <= unsigned (input_b);
 					else 
-						input_a_replica_a <= input_a_replica_a;
-						input_b_replica_a <= input_b_replica_a;
+						input_a_replica_x <= input_a_replica_x;
+						input_b_replica_x <= input_b_replica_x;
 					end if;
 
 					if En_b = '1' then
-						input_a_replica_b <= unsigned (input_a);
-						input_b_replica_b <= unsigned (input_b);
+						input_a_replica_y <= unsigned (input_a);
+						input_b_replica_y <= unsigned (input_b);
 					else 
-						input_a_replica_b <= input_a_replica_b;
-						input_b_replica_b <= input_b_replica_b;
+						input_a_replica_y <= input_a_replica_y;
+						input_b_replica_y <= input_b_replica_y;
 					end if;				
 		end process;
 
+---------------------------------------------------------------------------------------------------
+		--PROCESS PER GENERARE L'ENABLE
+---------------------------------------------------------------------------------------------------
 						
 		generation_ enable : process ( clk , reset ) 
 		begin 
@@ -120,18 +123,16 @@ begin
 					else out_mul <= out_mul_replica_b;
 				end if ;
 		end process;
-
+					
+---------------------------------------------------------------------------------------------------
+		--PROCESS PER IL PENULTIMO E L'ULTIMO FLIP FLOP
+---------------------------------------------------------------------------------------------------
+					
 		process_shift_register_for_retarding : process ( clk  )  --ritardo di 3 cicli di clock
 		begin
 				if rising_edge(clk) = '1' then
 					SR_input_c(0) <= input_c;
 					SR_input_c( 1 TO 2) <= SR_input_c( 0 TO 1);
-				end if ;
-		end process;
-
-		process_exit : process ( clk  ) 
-		begin
-				if rising_edge(clk) = '1' then
 					result <= std_logic_vector(out_add);
 				end if ;
 		end process;
