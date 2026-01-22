@@ -15,42 +15,47 @@ entity Esercizio1 is
     result  : out std_logic_vector ( 31 DOWNTO 0)
   );
 end Esercizio1;
+	
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
-  Architecture Behavioral of Esercizio1 is 
+  
+	Architecture Behavioral of Esercizio1 is 
   
     component multiplier is
 	Port (
-	input_a			: in unsigned(31 DOWNTO 0);
-	input_b			: in unsigned(31 DOWNTO 0);
+	input_a			: in  unsigned(31 DOWNTO 0);
+	input_b			: in  unsigned(31 DOWNTO 0);
 	result			: out unsigned(31 DOWNTO 0)
 	);
     end component;
     
     component adder is
 	Port (
-	input_a			: in unsigned(31 DOWNTO 0);
-	input_b			: in unsigned(31 DOWNTO 0);
+	input_a			: in  unsigned(31 DOWNTO 0);
+	input_b			: in  unsigned(31 DOWNTO 0);
 	result			: out unsigned(31 DOWNTO 0)
 	);
     end component;
 
     signal out_mul : unsigned(31 DOWNTO 0);
 
+---------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+
     begin
 
     MULTIPLIER_INST : multiplier
       Port map ( 
-          input_a   => unsigned(input_a),
-	      input_b	=> unsigned(input_b),
+          input_a   => unsigned(input_a),  -- casto direttamente sul port map
+	      input_b	=> unsigned(input_b),  -- casto direttamente sul port map
 	      result	=> out_mul
       );
       
     ADDER_INST : adder
       Port map ( 
-          input_a   => unsigned(input_c),
-	      input_b	=> out_mul
-	      std_logic_vector(result)	=> result
+          input_a   => unsigned(input_c),  -- casto direttamente sul port map
+	      input_b	=> out_mul, 
+	      std_logic_vector(result)	=> result  -- casto anche al contrario sul port map !?
       );
       
  end Behavioral;   
