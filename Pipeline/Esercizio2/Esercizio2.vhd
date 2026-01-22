@@ -18,6 +18,7 @@ entity Esercizio2 is
 end Esercizio2;
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
+	
   Architecture Behavioral of Esercizio2 is 
   
     component multiplier is
@@ -39,6 +40,9 @@ end Esercizio2;
     signal out_mul   : unsigned(31 DOWNTO 0);
 	signal out_adder : unsigned(31 DOWNTO 0);
 
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+
     begin
 
     MULTIPLIER_INST : multiplier
@@ -52,14 +56,18 @@ end Esercizio2;
       Port map ( 
           input_a   => unsigned(input_c),
 	      input_b	=> out_mul
-	      result	=> out_adder
+	      result	=> out_adder -- out adder ora è ancora unsigned
       );
 
+		-- fin qui tutto praticamente uguale a prima , cambia solo che ora ho un signal in più a cui collegare l'uscita dell'adder
+		-- ora vado a fare il process per instanziare il registro
 		process ( clk  , reset ) 
 		begin
 				if reset = '1' then
 					result <= (Others => '0');
-				elsif rising_edge(clk) = '1' then
+				end if;
+					
+				if rising_edge(clk) = '1' then
 					result <= std_logic_vector(out_add);
 				end if;
 		end process;
