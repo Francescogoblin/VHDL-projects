@@ -3,7 +3,10 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
--- Latenza= 1 ciclo di clock = Tclk.  Throughput del sistema --> dipende dal tempo di clock. Se ad esempio ho un clock a 45MHz il throughput è 45MHz * 32bit al secondo = 45MHz * 4Byte al secondo = 1440 MBit/sec 
+-- Latenza= 1 ciclo di clock = Tclk.  
+-- Scelgo il tempo di clock minimo (che mi darà la frequenza massima) sapendo che non ha senso "riaprire il cancello" se la logica non ha ancora elaborato un risultato. Quindi Tclk=Tpd= 22ns
+-- Throughput del sistema --> dipende dal tempo di clock. In questo caso sarà 1/Tclk = 45 Mhz 
+-- Con un clock a 45MHz il throughput è 45MHz * 32bit al secondo = 45MHz * 4Byte al secondo = 1440 MBit/sec 
 
 entity Esercizio2 is
   Port(
