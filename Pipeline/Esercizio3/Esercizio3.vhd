@@ -20,8 +20,10 @@ entity Esercizio3 is
     result  : out std_logic_vector ( 31 DOWNTO 0)
   );
 end Esercizio3;
+
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
+	
   Architecture Behavioral of Esercizio3 is 
   
     component multiplier is
@@ -40,10 +42,12 @@ end Esercizio3;
 	);
     end component;
 
-    signal out_mul   : unsigned(31 DOWNTO 0);
-	signal out_adder : unsigned(31 DOWNTO 0);
+-- DEVO SINCRONIZZARE GLI INGRESSI DEL BLOCCO DI ADDIZIONE : metto un registro che separa input_C e che separa l'uscita di MULTIPLIER 
+	  
+    signal out_mul     : unsigned(31 DOWNTO 0); --entrambi per il registro che divide l'uscita del multiplier
 	signal out_mul_reg : unsigned(31 DOWNTO 0);
-	signal input_c_reg : unsigned(31 DOWNTO 0);
+	signal out_adder   : unsigned(31 DOWNTO 0); -- per il registro alla fine
+	signal input_c_reg : unsigned(31 DOWNTO 0); -- per il registro che divide input_C
     
 begin
 
@@ -61,15 +65,21 @@ begin
 	      result	=> out_adder
       );
 
+		--QUI INIZIAMO A CREARE I 3 REGISTRI
+		
 		process ( clk  , reset ) 
 		begin
 				if reset = '1' then
 					result <= (Others => '0');
 				elsif rising_edge(clk) = '1' then
-					result <= std_logic_vector(out_add);
-					input_c_reg <= unsigned(input_c);
-					out_mul_reg <= out_mul
-				end if;
+					
+					result <= std_logic_vector(out_add); --REGISTRO FINALE
+			
+					input_c_reg <= unsigned(input_c); --REGISTRO DI C
+		
+					out_mul_reg <= out_mul --REGISTRO DELL'USCITA DEL MULTIPLIER
+				
+			end if;
 		end process;
       
  end Behavioral;   
