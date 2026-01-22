@@ -6,7 +6,8 @@ use IEEE.numeric_std.all;
 -- Andiamo a spezzare il processo combinatorio più lungo, così che il tempo di propagazione totale è 15ns.
 -- In questo caso vediamo che la logica da 15ns ha 5ns di tempo extra prima che il registro le richieda il dato che ha appena calcolato. Questo è il massimo Tsetup --> Tsetup max = 5ns
 -- Considerando i registri ideali potremmo diminuire il periodo di clk fino a un tempo uguale al tempo della logica più lenta, ovvero 15ns. Fmax = 1/15ns = 66,7 Mhz
--- La latenza del sistema è .
+-- La latenza del sistema è il tempo che ci mette un ingresso a propagarsi in uscita, quindi in pratica a passare attraverso due registri. Questo tempo è 2*Tclk = 2*20ns = 40ns
+-- Il throughput come prima si valuta con la frequenza di clock, quindi THR= 50Mhz * 8Byte = 400MByte/s
 
 entity Esercizio3 is
   Port(
