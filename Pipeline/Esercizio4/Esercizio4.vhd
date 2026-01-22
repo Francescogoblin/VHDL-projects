@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 -- Vogliamo lavorare a 100Mhz , quindi il periodo di clock che vogliamo è di 10ns
 -- Utilizziamo la tecnica dell'interleaving, andando a spezzare in due blocchi paralleli il blocco da 15ns, facendolo così lavorare a 7,5ns
--- Per il calcolo del tempo di setup massimo
+-- Per il calcolo del tempo di setup massimo vedo che quello del pezzo dell'interleaving sarebbe 2,5ns mentre l'altro 3ns. E' maggiore il secondo-
 -- Considerando registri ideali il minimo periodo di clock sarebbe proprio 7,5ns , che da una frequenza massima di clk di 133Mhz
 -- La latenza del sistema quindi sarà 10ns*2 = 20ns
 -- Il throughput dipenderà ancora dal tempo di clock, e quindi sarà THR= 100Mhz * 4Byte = 400Mbyte/s = 3,2 Gbyte/S
