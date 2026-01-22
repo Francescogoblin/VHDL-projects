@@ -2,6 +2,9 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
+-- Vogliamo lavorare a 100Mhz , quindi il periodo di clock che vogliamo è di 10ns
+-- Utilizziamo la tecnica dell'interleaving, andando a spezzare in due blocchi paralleli il blocco da 15ns, facendolo così lavorare a 7,5ns
+-- In questo caso, dopo che il blocco ha finito di lavorare , prima che gli venga righiesto il dato che ha appena calcolato ci sono ancora 2,5ns, che è il nostro massimo Tsetup
 -- per ogni moltiplicatore che andiamo a creare dobbiamo garantire che i suoi dati di ingresso stiano stabili almeno per il suo tempo di propagazione creiamo due registri
 -- non uso un latch al posto dei due registri perchè quando il latch è trasparente data_in dovrebbe essere stabile per quello scritto sopra, ma io non posso garantirlo
 
