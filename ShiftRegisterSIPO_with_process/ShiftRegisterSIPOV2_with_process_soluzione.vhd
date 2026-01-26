@@ -19,7 +19,7 @@ begin
    
       data_out <= data_out_int;
          
-         process ( clk, reset) 
+process ( clk, reset) 
    
             begin
 
@@ -30,14 +30,16 @@ begin
                     data_out_int ( data_out'HIGH-1 DOWNTO 0) <= data_out_int ( data_out'HIGH DOWNTO 0+1);
                     data_out_int ( data_out_int'HIGH) <= data_in;
                end if;
-    --METODO DEL FOR LOOP
-      for I in data_out_int'RANGE loop
-          if I=data_out_int'LEFT then
-              data_out_int(I) <= data_in;
-          else
-              data_out_int(I) <= data_out_int (I+1) ;
-          end if;
-     end loop;
+   
+               --METODO DEL FOR LOOP
+               for I in data_out_int'RANGE loop
+                      if I=data_out_int'LEFT then
+                          data_out_int(I) <= data_in;
+                      else
+                          data_out_int(I) <= data_out_int (I+1) ;
+                     end if;
+              end loop;
      
 end process;
+                                  
 end Behavioral;
