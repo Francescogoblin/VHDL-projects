@@ -12,19 +12,24 @@ end ShiftRegisterSIPOV2;
 
 architecture Behavioral of ShiftRegisterSIPO is
 signal data_out_int : std_logic_vector(data_out'RANGE) := ( Others => '0');      --dobbiamo usare un vettore d'appoggio perchè data_out non può essere riletto
-begin
-data_out <= data_out_int;
-process ( clk, reset) 
-   
-   begin
 
-    --METODO DEL BIT PADDING
-      if reset ='1' then
-         data_out_int <= ( Others <= '0');   -- attenzione! non posso usare data_out perchè l'ho già usato fuori dal process: non posso farlo sia sincrono che asincrono
-      elsif rising_edge(clk) then
-         data_out_int ( data_out'HIGH-1 DOWNTO 0) <= data_out_int ( data_out'HIGH DOWNTO 0+1);
-         data_out_int ( data_out_int'HIGH) <= data_in;
-      end if
+
+begin
+
+   
+      data_out <= data_out_int;
+         
+         process ( clk, reset) 
+   
+            begin
+
+                --METODO DEL BIT PADDING
+               if reset ='1' then
+                    data_out_int <= ( Others <= '0');   -- attenzione! non posso usare data_out perchè l'ho già usato fuori dal process: non posso farlo sia sincrono che asincrono
+               elsif rising_edge(clk) then
+                    data_out_int ( data_out'HIGH-1 DOWNTO 0) <= data_out_int ( data_out'HIGH DOWNTO 0+1);
+                    data_out_int ( data_out_int'HIGH) <= data_in;
+               end if;
     --METODO DEL FOR LOOP
       for I in data_out_int'RANGE loop
           if I=data_out_int'LEFT then
